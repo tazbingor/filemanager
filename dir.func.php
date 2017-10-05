@@ -10,26 +10,40 @@
 
 function readDirectory($path)
 {
-//打开目录
+    $arr = NULL;
+
+    //打开目录
     $handle = opendir($path);
-//读取目录
+//    print_r($handle);
+//    print_r(readdir($handle));
+    //读取目录
     while (($item = readdir($handle)) !== false) {
 
         //除去.或者..文件名的目录
-        if ($item = '.' && $item != '..') {
+        if ($item != '.' && $item != '..') {
 
             //若是文件
             if (is_file($path . "/" . $item)) {
                 $arr['file'][] = $item;
+//                global $arr;
             }
 
             //若是目录
             if (is_dir($path . "/" . $item)) {
                 $arr['dir'][] = $item;
+//                global $arr;
             }
         }
     }
 
-//关闭
+    //关闭
     closedir($handle);
+    return $arr;
+
 }
+
+
+//test
+$path = "file";
+//print_r($path);
+print_r(readDirectory($path));
