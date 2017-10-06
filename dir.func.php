@@ -44,6 +44,6 @@ function readDirectory($path)
 
 
 //test
-$path = "file";
-//print_r($path);
-print_r(readDirectory($path));
+//$path = "file";
+////print_r($path);
+//print_r(readDirectory($path));
