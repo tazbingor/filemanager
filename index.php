@@ -127,6 +127,9 @@ $info = readDirectory($path);
                 <td><?php $src = is_readable($p) ? "correct.png" : "error.png" ?><img class="small"
                                                                                       src="images/<?php echo $src; ?>"
                                                                                       alt="">
+                <td><?php $src = is_writable($p) ? "correct.png" : "error.png" ?><img class="small"
+                                                                                      src="images/<?php echo $src; ?>"
+                                                                                      alt="">
                 </td>
 
             </tr>
