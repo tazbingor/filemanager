@@ -136,6 +136,10 @@ $info = readDirectory($path);
                                                                                         alt="">
                 </td>
 
+                <td><?php echo date("Y-m-d H:i:s", filectime($p)) ?>
+
+                </td>
+
             </tr>
 
 
