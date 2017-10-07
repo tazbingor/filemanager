@@ -135,12 +135,56 @@ $info = readDirectory($path);
                                                                                         src="images/<?php echo $src; ?>"
                                                                                         alt="">
                 </td>
-
                 <td><?php echo date("Y-m-d H:i:s", filectime($p)) ?></td>
-
                 <td><?php echo date("Y-m-d H:i:s", filemtime($p)) ?></td>
-
                 <td><?php echo date("Y-m-d H:i:s", fileatime($p)) ?></td>
+
+                <td>
+                    <?php
+
+
+                    //得到文件扩展名
+                    $s = explode(".", $value);
+                    $endS = end($s);
+                    $ext = strtolower($endS);
+                    $imageExt = array("gif", "jpg", "jpeg", "png");
+                    if (in_array($ext, $imageExt)) {
+                        ?>
+                        <a href="#" onclick="showDetail('<?php echo $value; ?>','<?php echo $p; ?>')"><img class="small"
+                                                                                                           src="images/show.png"
+                                                                                                           alt=""
+                                                                                                           title="查看"/></a>|
+                        <?php
+                    } else {
+                        ?>
+                        <a href="index.php?act=showContent&path=<?php echo $path; ?>&filename=<?php echo $p; ?>"><img
+                                    class="small" src="images/show.png" alt="" title="查看"/></a>|
+                    <?php } ?>
+                    <a href="index.php?act=editContent&path=<?php echo $path; ?>&filename=<?php echo $p; ?>"><img
+                                class="small" src="images/edit.png" alt="" title="修改"/></a>|
+                    <a href="index.php?act=renameFile&path=<?php echo $path; ?>&filename=<?php echo $p; ?>"><img
+                                class="small" src="images/rename.png" alt="" title="重命名"/></a>|
+                    <a href="index.php?act=copyFile&path=<?php echo $path; ?>&filename=<?php echo $p; ?>"><img
+                                class="small"
+                                src="images/copy.png"
+                                alt=""
+                                title="复制"/></a>|
+                    <a href="index.php?act=cutFile&path=<?php echo $path; ?>&filename=<?php echo $p; ?>"><img
+                                class="small"
+                                src="images/cut.png"
+                                alt=""
+                                title="剪切"/></a>|
+                    <a href="#" onclick="delFile('<?php echo $p; ?>','<?php echo $path; ?>')"><img class="small"
+                                                                                                   src="images/delete.png"
+                                                                                                   alt=""
+                                                                                                   title="删除"/></a>|
+                    <a href="index.php?act=downFile&path=<?php echo $path; ?>&filename=<?php echo $p; ?>"><img
+                                class="small"
+                                src="images/download.png"
+                                alt=""
+                                title="下载"/></a>
+                </td>
+
 
             </tr>
 
