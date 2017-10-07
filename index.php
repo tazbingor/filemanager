@@ -70,18 +70,28 @@ $info = readDirectory($path);
 </head>
 <body>
 
-<div id="showDetail"  style="display:none"><img src="" id="showImg" alt=""/></div>
+<div id="showDetail" style="display:none"><img src="" id="showImg" alt=""/></div>
 <h1>TD在线文件管理器</h1>
 <div id="top">
     <ul id="navi">
-        <li><a href="index.php" title="主目录"><span style="margin-left: 8px; margin-top: 0px; top: 4px;" class="icon icon-small icon-square"><span class="icon-home"></span></span></a></li>
-        <li><a href="#"  onclick="show('createFile')" title="新建文件" ><span style="margin-left: 8px; margin-top: 0px; top: 4px;" class="icon icon-small icon-square"><span class="icon-file"></span></span></a></li>
-        <li><a href="#"  onclick="show('createFolder')" title="新建文件夹"><span style="margin-left: 8px; margin-top: 0px; top: 4px;" class="icon icon-small icon-square"><span class="icon-folder"></span></span></a></li>
-        <li><a href="#" onclick="show('uploadFile')"title="上传文件"><span style="margin-left: 8px; margin-top: 0px; top: 4px;" class="icon icon-small icon-square"><span class="icon-upload"></span></span></a></li>
+        <li><a href="index.php" title="主目录"><span style="margin-left: 8px; margin-top: 0px; top: 4px;"
+                                                  class="icon icon-small icon-square"><span
+                            class="icon-home"></span></span></a></li>
+        <li><a href="#" onclick="show('createFile')" title="新建文件"><span
+                        style="margin-left: 8px; margin-top: 0px; top: 4px;" class="icon icon-small icon-square"><span
+                            class="icon-file"></span></span></a></li>
+        <li><a href="#" onclick="show('createFolder')" title="新建文件夹"><span
+                        style="margin-left: 8px; margin-top: 0px; top: 4px;" class="icon icon-small icon-square"><span
+                            class="icon-folder"></span></span></a></li>
+        <li><a href="#" onclick="show('uploadFile')" title="上传文件"><span
+                        style="margin-left: 8px; margin-top: 0px; top: 4px;" class="icon icon-small icon-square"><span
+                            class="icon-upload"></span></span></a></li>
         <?php
-        $back=($path=="file")?"file":dirname($path);
+        $back = ($path == "file") ? "file" : dirname($path);
         ?>
-        <li><a href="#" title="返回上级目录" onclick="goBack('<?php echo $back;?>')"><span style="margin-left: 8px; margin-top: 0px; top: 4px;" class="icon icon-small icon-square"><span class="icon-arrowLeft"></span></span></a></li>
+        <li><a href="#" title="返回上级目录" onclick="goBack('<?php echo $back; ?>')"><span
+                        style="margin-left: 8px; margin-top: 0px; top: 4px;" class="icon icon-small icon-square"><span
+                            class="icon-arrowLeft"></span></span></a></li>
     </ul>
 </div>
 
@@ -99,6 +109,26 @@ $info = readDirectory($path);
         <td>访问时间</td>
         <td>操作</td>
     </tr>
+    <?php
+    if ($info['file']) {
+        $i = 1;
+        foreach ($info['file'] as $value) {
+            $p = $path . "/" . $value;
+            ?>
+            <tr>
+                <td><?php echo $i; ?></td>
+                <td><?php echo $value; ?></td>
+                <td><?php $src = filetype($p) == "file" ? "file_ico.png" : "folder_ico.png"; ?><img
+                            src="images/<?php echo $src; ?>" alt="" title="文件"/>
+                </td>
+            </tr>
+
+
+            <?php
+            $i++;
+        }
+    }
+    ?>
 </table>
 
 
