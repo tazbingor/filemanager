@@ -7,9 +7,9 @@
  */
 
 /**
- * @param $size
- * @return string
  * 判断文件单位
+ * @param number $size
+ * @return number
  */
 function transByte($size)
 {

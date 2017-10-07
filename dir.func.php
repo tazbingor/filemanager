@@ -9,9 +9,10 @@
  */
 
 /**
- * @param $path
- * @return null
- * 读取文件
+ *
+ * 读取最外层目录和内容
+ * @param string $path
+ * @return array
  */
 function readDirectory($path)
 {

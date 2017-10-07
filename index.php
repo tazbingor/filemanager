@@ -11,8 +11,10 @@
 
 //文件操作
 require_once 'dir.func.php';
+require_once 'file.func.php';
 $path = "file";
 $info = readDirectory($path);
+
 //    print_r($info);
 
 ?>
@@ -121,6 +123,7 @@ $info = readDirectory($path);
                 <td><?php $src = filetype($p) == "file" ? "file_ico.png" : "folder_ico.png"; ?><img
                             src="images/<?php echo $src; ?>" alt="" title="文件"/>
                 </td>
+                <td><?php echo transByte(filesize($p));?></td>
             </tr>
 
 
