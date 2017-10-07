@@ -142,7 +142,6 @@ $info = readDirectory($path);
                 <td>
                     <?php
 
-
                     //得到文件扩展名
                     $s = explode(".", $value);
                     $endS = end($s);
