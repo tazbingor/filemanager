@@ -8,6 +8,11 @@
  * 所有目录相关操作
  */
 
+/**
+ * @param $path
+ * @return null
+ * 读取文件
+ */
 function readDirectory($path)
 {
     $arr = NULL;
