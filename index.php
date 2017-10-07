@@ -123,7 +123,12 @@ $info = readDirectory($path);
                 <td><?php $src = filetype($p) == "file" ? "file_ico.png" : "folder_ico.png"; ?><img
                             src="images/<?php echo $src; ?>" alt="" title="文件"/>
                 </td>
-                <td><?php echo transByte(filesize($p));?></td>
+                <td><?php echo transByte(filesize($p)); ?></td>
+                <td><?php $src = is_readable($p) ? "correct.png" : "error.png" ?><img class="small"
+                                                                                      src="images/<?php echo $src; ?>"
+                                                                                      alt="">
+                </td>
+
             </tr>
 
 
