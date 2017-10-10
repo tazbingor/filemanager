@@ -8,16 +8,23 @@
  * 入口
  */
 
-
+error_reporting(0);
 //文件操作
 require_once 'dir.func.php';
 require_once 'file.func.php';
 $path = "file";
-$act = $_REQUEST['act'];
-$filename = $_REQUEST['filename'];
+$act = @$_REQUEST['act'];
+$filename = @$_REQUEST['filename'];
 $info = readDirectory($path);
 
-//    print_r($info);
+
+//创建文件
+if ($act == "createFile") {
+//    echo $path, "--";
+//    echo $filename;
+
+
+}
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
@@ -29,6 +36,8 @@ $info = readDirectory($path);
     <link rel="stylesheet" href="css/cikonss.css"/>
     <link rel="stylesheet" href="jquery-ui/css/ui-lightness/jquery-ui-1.10.4.custom.css" type="text/css"/>
     <link rel="stylesheet" href="css/main.css">
+
+    <link href="images/show.png" rel="icon" />
     <script src="js/main.js"></script>
 </head>
 <body>
@@ -67,6 +76,15 @@ $info = readDirectory($path);
                 <input type="text" name="dirname"/>
                 <input type="hidden" name="path" value="<?php echo $path; ?>"/>
                 <input type="submit" name="act" value="创建文件夹"/>
+            </td>
+        </tr>
+
+        <tr id="createFile" style="display:none;">
+            <td>请输入文件名称</td>
+            <td>
+                <input type="text" name="filename"/>
+                <input type="hidden" name="path" value="<?php echo $path; ?>"/>
+                <input type="submit" name="act" value="创建文件"/>
             </td>
         </tr>
 
