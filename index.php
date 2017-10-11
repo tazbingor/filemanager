@@ -20,13 +20,17 @@ $info = readDirectory($path);
 
 //创建文件
 if ($act == "createFile") {
-//    echo $path, "--";
-//    echo $filename;
+    echo $path, "--";
+    echo $filename;
+
+
+} else if ($act == "createFolder") {
 
 
 }
 
 ?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -37,7 +41,7 @@ if ($act == "createFile") {
     <link rel="stylesheet" href="jquery-ui/css/ui-lightness/jquery-ui-1.10.4.custom.css" type="text/css"/>
     <link rel="stylesheet" href="css/main.css">
 
-    <link href="images/show.png" rel="icon" />
+    <link href="images/show.png" rel="icon"/>
     <script src="js/main.js"></script>
 </head>
 <body>
@@ -75,7 +79,8 @@ if ($act == "createFile") {
             <td>
                 <input type="text" name="dirname"/>
                 <input type="hidden" name="path" value="<?php echo $path; ?>"/>
-                <input type="submit" name="act" value="创建文件夹"/>
+                <input type="hidden" name="act" value="createFolder">
+                <input type="submit" value="创建文件夹"/>
             </td>
         </tr>
 
@@ -84,7 +89,8 @@ if ($act == "createFile") {
             <td>
                 <input type="text" name="filename"/>
                 <input type="hidden" name="path" value="<?php echo $path; ?>"/>
-                <input type="submit" name="act" value="创建文件"/>
+                <input type="hidden" name="act" value="createFile">
+                <input type="submit" value="创建文件"/>
             </td>
         </tr>
 
