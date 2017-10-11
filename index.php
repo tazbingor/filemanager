@@ -26,11 +26,14 @@ if ($act == "createFile") {
     $mes = createFile($path . "/" . $filename);
     alertMes($mes, $redirect);
 
+} elseif ($act == "showContent") {
+
+    //查看文件内容
+    $content = file_get_contents($filename);
+    echo "<textarea cols='100' rows = '10'>{$content}</textarea>  ";
+
 }
-//else if ($act == "createFolder") {
-//
-//
-//}
+
 
 ?>
 
