@@ -30,7 +30,7 @@ if ($act == "createFile") {
 
     //查看文件内容
     $content = file_get_contents($filename);
-    echo "<textarea cols='100' rows = '10'>{$content}</textarea>  ";
+    echo "<textarea readonly='readonly' cols='100' rows = '10'>{$content}</textarea>  ";
 
 }
 
