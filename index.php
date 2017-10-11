@@ -20,8 +20,11 @@ $info = readDirectory($path);
 
 //创建文件
 if ($act == "createFile") {
-    echo $path, "--";
-    echo $filename;
+//    echo $path, "--";
+//    echo $filename;
+
+    //创建文件
+    $mes = createFile($path . "/" . $filename);
 
 
 } else if ($act == "createFolder") {
