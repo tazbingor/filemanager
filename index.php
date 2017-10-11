@@ -16,6 +16,7 @@ $path = "file";
 $act = @$_REQUEST['act'];
 $filename = @$_REQUEST['filename'];
 $info = readDirectory($path);
+$redirect = "index.php?path={$path}";  //跳转路径
 
 
 //创建文件
@@ -25,7 +26,7 @@ if ($act == "createFile") {
 
     //创建文件
     $mes = createFile($path . "/" . $filename);
-
+    alertMes($mes, $redirect);
 
 } else if ($act == "createFolder") {
 
