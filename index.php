@@ -19,18 +19,18 @@ $info = readDirectory($path);
 $redirect = "index.php?path={$path}";  //跳转路径
 
 if ($act == "createFile") {
-//    echo $path, "--";
-//    echo $filename;
-
     //创建文件
     $mes = createFile($path . "/" . $filename);
     alertMes($mes, $redirect);
 
 } elseif ($act == "showContent") {
-
     //查看文件内容
     $content = file_get_contents($filename);
     echo "<textarea readonly='readonly' cols='100' rows = '10'>{$content}</textarea>  ";
+
+    //字段高亮模块
+    highlight_string($content);
+
 
 }
 
