@@ -6,6 +6,7 @@
  * Time: 21:54
  *
  * 入口
+ * 变更开发环境
  */
 
 error_reporting(0);
