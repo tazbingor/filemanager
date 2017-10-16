@@ -270,7 +270,8 @@ EOF;
                     <td><?php echo $val; ?></td>
                     <td><?php $src = filetype($p) == "file" ? "file_ico.png" : "folder_ico.png"; ?><img
                                 src="images/<?php echo $src; ?>" alt="" title="文件"/></td>
-                    <td><?php echo transByte(dirSize($p)); ?></td>
+                    <td><?php $sum = 0;
+                        echo transByte(dirSize($p)); ?></td>
                     <td><?php $src = is_readable($p) ? "correct.png" : "error.png"; ?><img class="small"
                                                                                            src="images/<?php echo $src; ?>"
                                                                                            alt=""/></td>
