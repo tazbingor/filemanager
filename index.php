@@ -82,7 +82,9 @@ EOF;
     echo $str;
 } else if ($act == "doRename") {    //实现重命名
     $newname = $_REQUEST['newname'];
-    renameFile($filename,$newname);
+    $mes = renameFile($filename, $newname);
+    alertMes($mes, $redirect);
+
 }
 
 ?>

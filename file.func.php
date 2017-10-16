@@ -64,7 +64,6 @@ function createFile($filename)
  */
 function renameFile($oldname, $newname)
 {
-//    echo $oldname, $newname;
     if (checkFilename($newname)) { //验证文件名
         $path = dirname($oldname);
         if (!file_exists($path . "/" . $newname)) {
@@ -74,7 +73,6 @@ function renameFile($oldname, $newname)
         }
     } else
         return "非法文件名！";
-
 
 }
 
