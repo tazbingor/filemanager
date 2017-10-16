@@ -64,18 +64,28 @@ EOF;
 } else if ($act == "doEdit") {//修改文件操作
     $content = $_REQUEST('content');
 //    echo $content;
-    if (file_put_contents($filename,$content)) {
+    if (file_put_contents($filename, $content)) {
         $mes = "文件修改成功";
     } else {
         $mes = "文件修改失败";
     }
     alertMes($mes, $redirect);
+
+} else if ($act == "renameFile") {  //重命名文件
+    $str = <<<EOF
+    <form action="index.php?act=doRename" method="post">
+    请填写新文件名：<input type="text" name="newname" placeholder="重命名">
+    <input type="hidden" name="filename" value="{$filename}">
+    <input type="submit" value="重命名">
+</form>
+EOF;
+    echo $str;
 }
 
 ?>
-dd
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
