@@ -13,6 +13,8 @@ error_reporting(0);
 //文件操作
 require_once 'dir.func.php';
 require_once 'file.func.php';
+//require_once 'common.func.php';
+
 $path = "file";
 $act = @$_REQUEST['act'];
 $filename = @$_REQUEST['filename'];
@@ -25,14 +27,26 @@ if ($act == "createFile") {
     alertMes($mes, $redirect);
 
 } elseif ($act == "showContent") {
-    //查看文件内容
+    //    //查看文件内容
     $content = file_get_contents($filename);
-    echo "<textarea readonly='readonly' cols='100' rows = '10'>{$content}</textarea>  ";
-
-    //字段高亮模块
-    highlight_string($content);
-
-
+    if (strlen($content)) {
+        //    echo "<textarea readonly='readonly' cols='100' rows = '10'>{$content}</textarea>  ";
+        //
+        //    //字段高亮模块
+        //    highlight_string($content);
+        //    highlight_file($filename);
+        $newContent = highlight_string($content, true);
+        $str = <<<EOF
+    <table width ='80%' bgcolor='#f0f0f0' cellpadding='5' cellspacing='0'>
+        <tr>
+            <td> {$newContent}</td>
+        </tr>
+    </table>
+EOF;
+        echo $str;
+    }else{
+        alertMes("文件内容为空，请编辑文件");
+    }
 }
 
 
