@@ -75,8 +75,3 @@ function dirSize($path)
     return $sum;
 }
 
-
-//test
-//$path = "file";
-////print_r($path);
-//print_r(readDirectory($path));
