@@ -88,6 +88,11 @@ EOF;
 } else if ($act == "delFile") { //删除文件
     $mes = delFile($filename);
     alertMes($mes, $redirect);
+
+} else if ($act == "downFile") { //下载文件
+
+    $mes = downloadFile($filename);
+//    alertMes($mes, $redirect);
 }
 
 ?>

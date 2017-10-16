@@ -93,6 +93,20 @@ function checkFilename($filename)
  * @param string $filename
  * @return string
  */
-function delFile($filename){
-    return unlink($filename) ? "文件删除成功":"文件删除失败";
+function delFile($filename)
+{
+    return unlink($filename) ? "文件删除成功" : "文件删除失败";
+}
+
+
+/**
+ * 下载文件
+ * @param string $filename
+ */
+function downloadFile($filename)
+{
+    header("content-disposition: attachment; filename=" . basename($filename));
+    header("content-length:" . filesize($filename));
+    readfile($filename);
+
 }
