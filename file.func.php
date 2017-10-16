@@ -86,3 +86,13 @@ function checkFilename($filename)
     $pattern = "/[\/,\*,<>,\?\|]/";//验证文件合法性
     return !preg_match($pattern, $filename) ? true : false;
 }
+
+
+/**
+ * 删除文件
+ * @param string $filename
+ * @return string
+ */
+function delFile($filename){
+    return unlink($filename) ? "文件删除成功":"文件删除失败";
+}

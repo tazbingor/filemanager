@@ -85,6 +85,9 @@ EOF;
     $mes = renameFile($filename, $newname);
     alertMes($mes, $redirect);
 
+} else if ($act == "delFile") { //删除文件
+    $mes = delFile($filename);
+    alertMes($mes, $redirect);
 }
 
 ?>
