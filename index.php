@@ -44,12 +44,27 @@ if ($act == "createFile") {
     </table>
 EOF;
         echo $str;
-    }else{
+    } else {
         alertMes("文件内容为空，请编辑文件");
     }
+} else if ($act == "editContent") {
+//    echo "编辑文件";
+    $content = file_get_contents($filename);
+    //放入编辑器修改文件
+    $str = <<<EOF
+    <form action="index.php?act=doEdit" method="post">
+    <textarea name="content" id="" cols="190" rows="10">{$content}</textarea><br/>
+    <input type="submit" value="修改文件内容">
+</form>
+
+EOF;
+    echo $str;
+
+} else if ($act == "doEdit") {//修改文件
+
+
+
 }
-
-
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
