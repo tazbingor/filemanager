@@ -45,15 +45,46 @@ function createFile($filename)
         //检测当前目录下是否存在同名文件
         if (!file_exists($filename)) {
             //通过touch($filename)来创建
-            if (touch($filename)) {
-                return "文件创建成功";
-            } else {
-                return "文件创建失败";
-            }
+            return touch($filename) ? "文件创建成功" : "文件创建失败";
+
         } else {
             return "文件已存在，请重命名后创建";
         }
-    } else {
+    } else
         return "非法文件名";
-    }
+
+}
+
+
+/**
+ * 文件重命名
+ * @param string $oldname
+ * @param string $newname
+ * @return string
+ */
+function renameFile($oldname, $newname)
+{
+//    echo $oldname, $newname;
+    if (checkFilename($newname)) { //验证文件名
+        $path = dirname($oldname);
+        if (!file_exists($path . "/" . $newname)) {
+            return rename($oldname, $path . "/" . $newname) ? "重命名成功" : "重命名失败";
+        } else {
+            return "存在同名文件，请重新输入 ";
+        }
+    } else
+        return "非法文件名！";
+
+
+}
+
+/**
+ * 检测文件名
+ * @param $filename
+ * @return bool
+ */
+function checkFilename($filename)
+{
+    $pattern = "/[\/,\*,<>,\?\|]/";//验证文件合法性
+    return !preg_match($pattern, $filename) ? true : false;
 }
