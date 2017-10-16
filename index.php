@@ -54,17 +54,24 @@ EOF;
     $str = <<<EOF
     <form action="index.php?act=doEdit" method="post">
     <textarea name="content" id="" cols="190" rows="10">{$content}</textarea><br/>
+    <input type="hidden" name="filename" value="{$filename}">
     <input type="submit" value="修改文件内容">
 </form>
 
 EOF;
     echo $str;
 
-} else if ($act == "doEdit") {//修改文件
-
-
-
+} else if ($act == "doEdit") {//修改文件操作
+    $content = $_REQUEST('content');
+//    echo $content;
+    if (file_put_contents($filename,$content)) {
+        $mes = "文件修改成功";
+    } else {
+        $mes = "文件修改失败";
+    }
+    alertMes($mes, $redirect);
 }
+
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
