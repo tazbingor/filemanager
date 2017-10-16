@@ -187,6 +187,7 @@ dd
                         $ext = strtolower($endS);
                         $imageExt = array("gif", "jpg", "jpeg", "png");
                         if (in_array($ext, $imageExt)) {
+
                             ?>
                             <a href="#" onclick="showDetail('<?php echo $value; ?>','<?php echo $p; ?>')"><img
                                         class="small"
