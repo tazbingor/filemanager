@@ -16,13 +16,18 @@ require_once 'file.func.php';
 //require_once 'common.func.php';
 
 $path = "file";
+$path = $_REQUEST['path'] ? $_REQUEST['path'] : $path;
 $act = @$_REQUEST['act'];
 $filename = @$_REQUEST['filename'];
 $info = readDirectory($path);
-$redirect = "index.php?path={$path}";  //跳转路径
 
+if (!$info) {
+    echo "<script>alert('没有文件或目录！！！');location.href='index.php';</script>";
+}
+
+$redirect = "index.php?path={$path}";  //跳转路径
 if ($act == "createFile") {
-    //创建文件
+
     $mes = createFile($path . "/" . $filename);
     alertMes($mes, $redirect);
 
