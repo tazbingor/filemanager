@@ -19,6 +19,7 @@ $path = "file";
 $path = $_REQUEST['path'] ? $_REQUEST['path'] : $path;
 $act = @$_REQUEST['act'];
 $filename = @$_REQUEST['filename'];
+$dirname = $_REQUEST['dirname'];
 $info = readDirectory($path);
 
 if (!$info) {
@@ -98,8 +99,17 @@ EOF;
 
     $mes = downloadFile($filename);
 //    alertMes($mes, $redirect);
+} else if ($act == "copyFolder") {
+    $str = <<<EOF
+    <form action="index.php?act=doCopyFolder" method="post">
+    请填写新文件夹名称：<input type="text" name="dstname" placeholder="将文件夹复制到">
+    <input type="hidden" name="path" value="{$path}">
+    <input type="hidden" name="filename" value="{$dirname}">
+    <input type="submit" value="复制">
+</form>
+EOF;
+    echo $str;
 }
-
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
