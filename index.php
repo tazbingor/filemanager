@@ -109,12 +109,29 @@ EOF;
 </form>
 EOF;
     echo $str;
-} else if ($act == "doCopyFolder") {
+} else if ($act == "doCopyFolder") {    //复制文件夹
 
     $dstname = $_REQUEST['dstname'];
     $mes = copyFolder($dirname, $path . "/" . $dstname . "/" . basename($dirname));
+    //    alertMes($mes, $redirect);
+} else if ($act == "renameFolder") {    //重命名文件夹
+    //    echo $dirname;
+    $str = <<<EOF
+    <form action="index.php?act=doRenameFolder" method="post">
+    请填写新文件夹名：<input type="text" name="newname" placeholder="重命名">
+    <input type="hidden" name="path" value="{$path}">
+    <input type="hidden" name="dirname" value="{$dirname}">
+    <input type="submit" value="重命名">
+</form>
+EOF;
+    echo $str;
+} else if ($act == "doRenameFolder") {    //重命名文件夹的实现
+    $newname = $_REQUEST['newname'];
+    $mes = renameFolder($dirname, $path."/".$newname);
 //    alertMes($mes, $redirect);
 }
+
+
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"

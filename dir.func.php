@@ -93,11 +93,11 @@ function copyFolder($src, $dst)
     while (($item = readdir($handle)) !== false) {
         if ($item != "." && $item != "..") {
             if (is_file($src . "/" . $item)) {
-                copy($src."/".$item,$dst."/".$item);
+                copy($src . "/" . $item, $dst . "/" . $item);
             }
             if (is_dir($src . "/" . $item)) {
                 $func = __FUNCTION__;
-                $func($src."/".$item,$dst."/".$item);
+                $func($src . "/" . $item, $dst . "/" . $item);
             }
 
         }
@@ -105,4 +105,26 @@ function copyFolder($src, $dst)
 
     closedir($handle);
     return "复制成功！";
+}
+
+/**
+ * 重命名文件夹
+ * @param string $oldname
+ * @param string $newname
+ * @return string
+ */
+function renameFolder($oldname, $newname)
+{
+
+    if (checkFilename(basename($newname))) { //检测合法性
+        if (!file_exists($newname)) {         //检测当前目录下是否存在同名文件夹
+            if (rename($oldname, $newname)) {
+                $mes = "重命名成功";
+            } else
+                $mes = "重命名失败";
+        } else
+            $mes = "存在同命名文件夹";
+    } else
+        $mes = "非法同名文件夹";
+    return $mes;
 }
