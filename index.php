@@ -104,11 +104,16 @@ EOF;
     <form action="index.php?act=doCopyFolder" method="post">
     请填写新文件夹名称：<input type="text" name="dstname" placeholder="将文件夹复制到">
     <input type="hidden" name="path" value="{$path}">
-    <input type="hidden" name="filename" value="{$dirname}">
+    <input type="hidden" name="dirname" value="{$dirname}">
     <input type="submit" value="复制">
 </form>
 EOF;
     echo $str;
+} else if ($act == "doCopyFolder") {
+
+    $dstname = $_REQUEST['dstname'];
+    $mes = copyFolder($dirname, $path . "/" . $dstname . "/" . basename($dirname));
+//    alertMes($mes, $redirect);
 }
 ?>
 

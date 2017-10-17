@@ -75,3 +75,34 @@ function dirSize($path)
     return $sum;
 }
 
+
+/**
+ *
+ * 复制文件夹
+ * @param string $src
+ * @param string $dst
+ * @return string
+ */
+function copyFolder($src, $dst)
+{
+    if (!filesize($dst)) {
+        mkdir($dst, 0777, true);
+    }
+
+    $handle = opendir($src);
+    while (($item = readdir($handle)) !== false) {
+        if ($item != "." && $item != "..") {
+            if (is_file($src . "/" . $item)) {
+                copy($src."/".$item,$dst."/".$item);
+            }
+            if (is_dir($src . "/" . $item)) {
+                $func = __FUNCTION__;
+                $func($src."/".$item,$dst."/".$item);
+            }
+
+        }
+    }
+
+    closedir($handle);
+    return "复制成功！";
+}
