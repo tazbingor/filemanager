@@ -13,6 +13,11 @@ function delFile(filename, path) {
     }
 }
 
+/**
+ * 删除文件夹
+ * @param dirname
+ * @param path
+ */
 function delFolder(dirname, path) {
     if (window.confirm("您确定要删除嘛?删除之后无法恢复哟!!!")) {
         location.href = "index.php?act=delFolder&dirname=" + dirname + "&path=" + path;
