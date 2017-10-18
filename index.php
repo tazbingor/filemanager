@@ -127,7 +127,22 @@ EOF;
     echo $str;
 } else if ($act == "doRenameFolder") {    //重命名文件夹的实现
     $newname = $_REQUEST['newname'];
-    $mes = renameFolder($dirname, $path."/".$newname);
+    $mes = renameFolder($dirname, $path . "/" . $newname);
+//    alertMes($mes, $redirect);
+} elseif ($act == "renameFolder") {
+    $str = <<<EOF
+			<form action="index.php?act=doRenameFolder" method="post"> 
+	请填写新文件夹名称:<input type="text" name="newname" placeholder="重命名"/>
+	<input type="hidden" name="path" value="{$path}" />
+	<input type='hidden' name='dirname' value='{$dirname}' />
+	<input type="submit" value="重命名"/>
+	</form>
+EOF;
+    echo $str;
+} elseif ($act == "doRenameFolder") {     //删除文件夹
+//    $newname = $_REQUEST['newname'];
+    //echo $newname,"-",$dirname,"-",$path;
+//    $mes = renameFolder($dirname, $path . "/" . $newname);
 //    alertMes($mes, $redirect);
 }
 

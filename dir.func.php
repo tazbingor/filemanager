@@ -128,3 +128,26 @@ function renameFolder($oldname, $newname)
         $mes = "非法同名文件夹";
     return $mes;
 }
+
+/**
+ * 删除文件夹
+ * @param string $path
+ * @return string
+ */
+function delFolder($path){
+    $handle=opendir($path);
+    while(($item=readdir($handle))!==false){
+        if($item!="."&&$item!=".."){
+            if(is_file($path."/".$item)){
+                unlink($path."/".$item);
+            }
+            if(is_dir($path."/".$item)){
+                $func=__FUNCTION__;
+                $func($path."/".$item);
+            }
+        }
+    }
+    closedir($handle);
+    rmdir($path);
+    return "文件夹删除成功";
+}
