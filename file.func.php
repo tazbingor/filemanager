@@ -110,3 +110,28 @@ function downloadFile($filename)
     readfile($filename);
 
 }
+
+/**
+ * 复制文件
+ * @param string $filename
+ * @param string $dstname
+ * @return string
+ */
+function copyFile($filename,$dstname){
+    if(file_exists($dstname)){
+        if(!file_exists($dstname."/".basename($filename))){
+            if(copy($filename,$dstname."/".basename($filename))){
+                $mes="文件复制成功";
+            }else{
+                $mes="文件复制失败";
+            }
+        }else{
+            $mes="存在同名文件";
+        }
+    }else{
+        $mes="目标目录不存在";
+    }
+    return $mes;
+}
+
+
